@@ -25,7 +25,7 @@ class ItemController extends Controller
     {
         // 商品一覧取得
         $items = Item
-            ::where('items.status', 'active')
+            ::where('items.status', 'active',)
             ->select()
             ->get();
 
@@ -56,5 +56,27 @@ class ItemController extends Controller
         }
 
         return view('item.add');
+    }
+
+    public function edit($id)
+    {
+        $item = Item::findOrFail($id);
+        // dd($item);
+        // $updateData = $request->validated();
+        return view('item.edit', compact('item'));
+
+    }
+
+    public function update(Request $request, $id)
+    {
+        $item = Item::findOrFail($id);
+        $item->name = $request->name;
+        $item->type = $request->type;
+        $item->detail = $request->detail;
+        $item->save();
+
+        return redirect()
+        ->route('item.index')
+        ->with('message', '更新しました');
     }
 }
