@@ -27,9 +27,10 @@ class ItemController extends Controller
         $items = Item
             ::where('items.status', 'active',)
             ->select()
-            ->get();
+            ->paginate(10);
 
         return view('item.index', compact('items'));
+
     }
 
     /**
@@ -77,6 +78,15 @@ class ItemController extends Controller
 
         return redirect()
         ->route('item.index')
-        ->with('message', '更新しました');
+        ->with('message', '商品情報を更新しました');
+    }
+
+    public function destroy($id)
+    {
+        $item = Item::findOrFail($id);
+        $item->delete();
+        return redirect()
+        ->route('item.index')
+        ->with('message', '商品情報を削除しました');
     }
 }
