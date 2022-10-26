@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', '商品登録')
+@section('title', '商品詳細')
 
 @section('content_header')
-    <h1>商品登録</h1>
+    <h1>商品詳細</h1>
 @stop
 
 @section('content')
@@ -20,34 +20,34 @@
             @endif
 
             <div class="card card-primary">
-                <form method="POST">
+                {{-- <form method="POST"> --}}
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">名前</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="名前">
+                            <div  class="form-control" id="name">
+                                {{ $item->name }}
+                            </div>
                         </div>
-
                         <div class="form-group">
                             <label for="type">種別</label>
                             {{-- <input type="number" class="form-control" id="type" name="type" placeholder="1, 2, 3, ..."> --}}
-                            <select name="type">
-                                @foreach (config('type') as $item_id => $status)
-                                    <option value="{{ $item_id }}">{{ $status }}</option>
-                                @endforeach
-                            </select>
+                            {{-- @foreach (config('type') as $item_id => $status) --}}
+                            <div class="form-control" id="type">{{ config("type.$item->type") }}</div>
+                            {{-- @endforeach --}}
                         </div>
-
                         <div class="form-group">
                             <label for="detail">詳細</label>
-                            <textarea class="form-control" id="detail" name="detail" placeholder="詳細説明"></textarea>
+                            <div class="border rounded pt-2 pb-2 pl-2" id="name">
+                                {!! nl2br($item->detail) !!}
+                            </div>
                         </div>
                     </div>
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">登録</button>
+                        <button type="submit" onclick="location.href = '/items'" class="btn btn-primary">戻る</button>
                     </div>
-                </form>
+                {{-- </form> --}}
             </div>
         </div>
     </div>

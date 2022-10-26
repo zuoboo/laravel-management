@@ -6,6 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
+
+    public function scopeSearchItems($query, $input = null)
+    {
+        if (!empty($input)) {
+            if (Item::where('name', 'like', $input . '%')->exists()) {
+                return $query->where('name', 'like', $input . '%');
+
+            }
+        }
+    }
     /**
      * The attributes that are mass assignable.
      *

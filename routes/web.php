@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,8 @@ Route::prefix('items')->group(function () {
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::get('/{item}/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('item.edit');
     Route::post('/{item}', [App\Http\Controllers\ItemController::class, 'update'])->name('item.update');
+    Route::get('/{item}', [App\Http\Controllers\ItemController::class, 'show'])->name('item.show');
     Route::delete('/{item}', [App\Http\Controllers\ItemController::class, 'destroy'])->name('item.destroy');
 });
+
+Route::resource('customers', CustomerController::class)->middleware('auth', 'verified');

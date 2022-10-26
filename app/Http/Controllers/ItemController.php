@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreItemRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
@@ -21,13 +22,14 @@ class ItemController extends Controller
     /**
      * 商品一覧
      */
-    public function index()
+    public function index(Request $request)
     {
+        $items = Item::SearchItems($request->search)->select()->paginate(30);
         // 商品一覧取得
-        $items = Item
-            ::where('items.status', 'active',)
-            ->select()
-            ->paginate(10);
+        // $items = Item
+        //     ::where('items.status', 'active',)
+        //     ->select()
+        //     ->paginate(10);
 
         return view('item.index', compact('items'));
 
@@ -59,6 +61,17 @@ class ItemController extends Controller
         return view('item.add');
     }
 
+    public function store(StoreItemRequest $request)
+    {
+        Item::create([
+            'name' => $request->name,
+            'type' => $request->type,
+            'detail' => $request->detail,
+        ]);
+
+        return to_route('item.index');
+    }
+
     public function edit($id)
     {
         $item = Item::findOrFail($id);
@@ -79,6 +92,12 @@ class ItemController extends Controller
         return redirect()
         ->route('item.index')
         ->with('message', '商品情報を更新しました');
+    }
+
+    public function show(Item $item) {
+        // dd($item);
+        return view('item.show', compact('item'));
+
     }
 
     public function destroy($id)

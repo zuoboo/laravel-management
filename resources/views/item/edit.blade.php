@@ -31,14 +31,16 @@
 
                     <div class="form-group">
                         <label for="type">種別</label>
-                        <input type="number" class="form-control" id="type" name="type" value="{{ $item->type }}"
-                            placeholder="1, 2, 3, ...">
+                        <select name="type">
+                            @foreach (config('type') as $item_id => $status)
+                                <option value="{{ $item_id }}" >{{ $status }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="form-group">
                         <label for="detail">詳細</label>
-                        <input type="text" class="form-control" id="detail" name="detail" value="{{ $item->detail }}"
-                            placeholder="詳細説明">
+                        <textarea class="form-control" id="detail" name="detail" value="{{ $item->detail }}">{{ $item->detail }}</textarea>
                     </div>
                 </div>
 

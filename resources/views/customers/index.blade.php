@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', '商品一覧')
+@section('title', '顧客一覧')
 
 @section('content_header')
-    <h1>商品一覧</h1>
+    <h1>顧客一覧</h1>
 @stop
 
 @section('content')
@@ -30,11 +30,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">商品一覧</h3>
+                    <h3 class="card-title">顧客一覧</h3>
                     <div class="card-tools">
                         <div class="input-group input-group-sm">
                             <div class="input-group-append">
-                                <a href="{{ url('items/add') }}" class="btn btn-default">商品登録</a>
+                                <a href="{{ url('customers/create') }}" class="btn btn-default">顧客登録</a>
                             </div>
                         </div>
                     </div>
@@ -44,21 +44,19 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>名前</th>
-                                <th>種別</th>
-                                <th>詳細</th>
-                                <th>操作</th>
+                                <th>氏名</th>
+                                <th>カナ</th>
+                                <th>電話番号</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($items as $item)
+                            @foreach ($customers as $customer)
                                 <tr>
-                                    <td><a href="{{ route('item.show', ['item' => $item->id]) }}">{{ $item->id }}</a>
-                                    </td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ config("type.$item->type") }}</td>
-                                    <td>{{ $item->detail }}</td>
-                                    <td>
+                                    <td>{{ $customer->id }}</td>
+                                    <td>{{ $customer->name }}</td>
+                                    <td>{{ $customer->kana }}</td>
+                                    <td>{{ $customer->tel }}</td>
+                                    {{-- <td>
                                         <div class="d-flex">
                                             <a class="mr-2" href="{{ route('item.edit', ['item' => $item->id]) }}">
                                                 <svg width="18" height="18" viewbox="0 0 18 18" fill="none"
@@ -68,8 +66,8 @@
                                                         fill="#382CDD"></path>
                                                 </svg>
                                             </a>
-                                            <form action="{{ route('item.destroy', ['item' => $item->id]) }}" method="post"
-                                                id="delete_{{ $item->id }}">
+                                            <form action="{{ route('item.destroy', ['item' => $item->id]) }}"
+                                                method="post" id="delete_{{ $item->id }}">
                                                 @csrf
                                                 @method('delete')
                                                 <button class="border-0 bg-transparent" onclick="return deletePost(this)"
@@ -83,13 +81,13 @@
                                                 </button>
                                             </form>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                     <div class="px-4 pt-4">
-                        {{ $items->links() }}
+                        {{ $customers->links() }}
                     </div>
                 </div>
             </div>
