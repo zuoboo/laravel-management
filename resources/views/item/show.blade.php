@@ -37,6 +37,12 @@
                             {{-- @endforeach --}}
                         </div>
                         <div class="form-group">
+                            <label for="price">価格</label>
+                            <div  class="form-control" id="price">
+                                {{ $item->price }}
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="detail">詳細</label>
                             <div class="border rounded pt-2 pb-2 pl-2" id="name">
                                 {!! nl2br($item->detail) !!}

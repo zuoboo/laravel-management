@@ -235,6 +235,11 @@ return [
             'url'  => 'customers',
             'icon' => 'fas fa-users',
         ],
+        [
+            'text' => '削除商品一覧',
+            'url'  => 'deleted-items/index',
+            'icon' => 'fas fa-trash',
+        ],
         // [
         //     'text' => '商品検索',
         //     'url'  => 'items',

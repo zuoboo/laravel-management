@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ItemController;
+use Database\Seeders\ItemSeeder;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,14 @@ Route::prefix('items')->group(function () {
     Route::post('/{item}', [App\Http\Controllers\ItemController::class, 'update'])->name('item.update');
     Route::get('/{item}', [App\Http\Controllers\ItemController::class, 'show'])->name('item.show');
     Route::delete('/{item}', [App\Http\Controllers\ItemController::class, 'destroy'])->name('item.destroy');
+
 });
 
 Route::resource('customers', CustomerController::class)->middleware('auth', 'verified');
+
+Route::prefix('deleted-items')->group(function(){
+    Route::get('index',[ItemController::class, 'deletedItemIndex'])->name('deleted-items.index');
+    Route::post('destroy/{item}', [ItemController::class, 'deletedItemDestroy'])->name('deleted-items.destroy');
+    Route::patch('restore/{item}', [ItemController::class, 'deletedItemRestore'])->name('deleted-items.restore');
+    Route::get('restore/{item}', [ItemController::class, 'deletedItemRestore'])->name('deleted-items.restore');
+});

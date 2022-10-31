@@ -24,7 +24,7 @@ class ItemController extends Controller
      */
     public function index(Request $request)
     {
-        $items = Item::SearchItems($request->search)->select()->paginate(30);
+        $items = Item::SearchItems($request->search)->select()->paginate(5);
         // 商品一覧取得
         // $items = Item
         //     ::where('items.status', 'active',)
@@ -107,5 +107,20 @@ class ItemController extends Controller
         return redirect()
         ->route('item.index')
         ->with('message', '商品情報を削除しました');
+    }
+
+    public function deletedItemIndex(){
+        $deletedItems = Item::onlyTrashed()->paginate(5);
+        return view('item.deleted-items', compact('deletedItems'));
+    }
+    public function deletedItemDestroy($id){
+        Item::onlyTrashed()->findOrFail($id)->forceDelete();
+        return redirect()->route('deleted-items.index')->with('message', '削除しました');
+    }
+    public function deletedItemRestore($id){
+
+        Item::onlyTrashed()->findOrFail($id)->restore();
+        $item = Item::findOrFail($id);
+        return redirect()->route('item.index')->with('message', $item->name.'を復元しました。');
     }
 }

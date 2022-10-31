@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">商品管理システム</div>
+                <div class="card-header text-center">CRM</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -51,11 +51,12 @@
                         </div> --}}
 
                         <div class="form-group row mb-0">
-                            <div class="mx-auto">
+                            <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">ログイン</button>
+                                <a class="ml-4" href="{{ route('register')}}">>>新規登録はこちら</a>
                             </div>
                         </div>
-                        <a class="" href="{{ route('register')}}">>>新規登録はこちら</a>
+
                     </form>
                 </div>
             </div>

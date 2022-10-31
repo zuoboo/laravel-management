@@ -37,6 +37,10 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="price">価格</label>
+                        <input type="number" class="form-control" id="price" name="price" value="{{ $item->price }}">
+                    </div>
 
                     <div class="form-group">
                         <label for="detail">詳細</label>

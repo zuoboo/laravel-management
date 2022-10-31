@@ -46,7 +46,7 @@
                                 <th>ID</th>
                                 <th>名前</th>
                                 <th>種別</th>
-                                <th>詳細</th>
+                                <th>価格</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
@@ -57,7 +57,7 @@
                                     </td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ config("type.$item->type") }}</td>
-                                    <td>{{ $item->detail }}</td>
+                                    <td>¥{{ number_format($item->price) }}</td>
                                     <td>
                                         <div class="d-flex">
                                             <a class="mr-2" href="{{ route('item.edit', ['item' => $item->id]) }}">
