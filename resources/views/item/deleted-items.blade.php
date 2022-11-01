@@ -47,8 +47,7 @@
                         <tbody>
                             @foreach ($deletedItems as $item)
                                 <tr>
-                                    <td><a href="{{ route('item.show', ['item' => $item->id]) }}">{{ $item->id }}</a>
-                                    </td>
+                                    <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ config("type.$item->type") }}</td>
                                     <td>¥{{ number_format($item->price) }}</td>

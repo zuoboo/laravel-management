@@ -236,9 +236,14 @@ return [
             'icon' => 'fas fa-users',
         ],
         [
+            'text' => '購入画面',
+            'url'  => 'purchases/create',
+            'icon' => 'fas fa-shopping-cart',
+        ],
+        [
             'text' => '削除商品一覧',
             'url'  => 'deleted-items/index',
-            'icon' => 'fas fa-trash',
+            'icon' => 'fas fa-users',
         ],
         // [
         //     'text' => '商品検索',

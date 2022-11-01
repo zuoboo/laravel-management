@@ -52,6 +52,7 @@ class ItemController extends Controller
                 'user_id' => Auth::user()->id,
                 'name' => $request->name,
                 'type' => $request->type,
+                'price' => $request->price,
                 'detail' => $request->detail,
             ]);
 
@@ -66,6 +67,7 @@ class ItemController extends Controller
         Item::create([
             'name' => $request->name,
             'type' => $request->type,
+            'price' => $request->price,
             'detail' => $request->detail,
         ]);
 
@@ -86,6 +88,7 @@ class ItemController extends Controller
         $item = Item::findOrFail($id);
         $item->name = $request->name;
         $item->type = $request->type;
+        $item->price = $request->price;
         $item->detail = $request->detail;
         $item->save();
 
