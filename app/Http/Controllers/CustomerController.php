@@ -19,11 +19,6 @@ class CustomerController extends Controller
         // 検索機能
         $customers = Customer::SearchCustomers($request->search)->select('id', 'name', 'kana', 'tel')->paginate(30);
 
-        // dd($customers);
-
-        // 商品一覧取得
-        // $customers = Customer::select('id', 'name', 'kana', 'tel')->paginate(20);
-
         return view('customers.index', compact('customers'));
     }
 
@@ -74,7 +69,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        //
+        return view('customers.show', compact('customer'));
     }
 
     /**

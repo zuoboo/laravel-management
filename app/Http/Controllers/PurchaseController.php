@@ -64,7 +64,8 @@ class PurchaseController extends Controller
             }
             DB::commit();
 
-            return view('home');
+            return redirect()->route('home')->with('message', '購入情報を登録しました。');
+
         } catch (\Exception $e) {
             DB::rollback();
         }
@@ -152,7 +153,8 @@ class PurchaseController extends Controller
             $purchase->items()->sync($a);
 
             DB::commit();
-            return view('home');
+            return redirect()->route('home')->with('message', '購買履歴を更新しました。');
+
         } catch (\Exception $e) {
             DB::rollback();
         }

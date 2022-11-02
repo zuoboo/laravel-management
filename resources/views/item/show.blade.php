@@ -9,15 +9,6 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
             <div class="card card-primary">
                 <div class="card-body">
                     <div class="form-group">
@@ -38,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label for="detail">詳細</label>
-                        <div class="border rounded pt-2 pb-2 pl-2" id="name">
+                        <div class="border rounded pt-2 pb-2 pl-2" id="detail">
                             {!! nl2br($item->detail) !!}
                         </div>
                     </div>

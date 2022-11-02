@@ -24,12 +24,7 @@ class ItemController extends Controller
      */
     public function index(Request $request)
     {
-        $items = Item::SearchItems($request->search)->select()->paginate(5);
-        // 商品一覧取得
-        // $items = Item
-        //     ::where('items.status', 'active',)
-        //     ->select()
-        //     ->paginate(10);
+        $items = Item::SearchItems($request->search)->select()->paginate(10);
 
         return view('item.index', compact('items'));
 
@@ -44,9 +39,10 @@ class ItemController extends Controller
         if ($request->isMethod('post')) {
             // バリデーション
             $this->validate($request, [
-                'name' => 'required|max:100',
+                'name' => ['required', 'max:50'],
+                'type' => ['required', 'max:10'],
+                'price' => ['required'],
             ]);
-
             // 商品登録
             Item::create([
                 'user_id' => Auth::user()->id,
@@ -55,23 +51,15 @@ class ItemController extends Controller
                 'price' => $request->price,
                 'detail' => $request->detail,
             ]);
-
-            return redirect('/items');
+            return redirect()
+            ->route('item.index')
+            ->with('message', '商品情報を登録しました。');
         }
-
         return view('item.add');
     }
 
     public function store(StoreItemRequest $request)
     {
-        Item::create([
-            'name' => $request->name,
-            'type' => $request->type,
-            'price' => $request->price,
-            'detail' => $request->detail,
-        ]);
-
-        return to_route('item.index');
     }
 
     public function edit($id)
@@ -85,6 +73,12 @@ class ItemController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => ['required', 'max:50'],
+            'type' => ['required', 'max:10'],
+            'price' => ['required'],
+        ]);
+
         $item = Item::findOrFail($id);
         $item->name = $request->name;
         $item->type = $request->type;
@@ -94,7 +88,7 @@ class ItemController extends Controller
 
         return redirect()
         ->route('item.index')
-        ->with('message', '商品情報を更新しました');
+        ->with('message', '商品情報を更新しました。');
     }
 
     public function show(Item $item) {
@@ -109,16 +103,16 @@ class ItemController extends Controller
         $item->delete();
         return redirect()
         ->route('item.index')
-        ->with('message', '商品情報を削除しました');
+        ->with('message', '商品情報を削除しました。');
     }
 
     public function deletedItemIndex(){
-        $deletedItems = Item::onlyTrashed()->paginate(5);
+        $deletedItems = Item::onlyTrashed()->paginate(10);
         return view('item.deleted-items', compact('deletedItems'));
     }
     public function deletedItemDestroy($id){
         Item::onlyTrashed()->findOrFail($id)->forceDelete();
-        return redirect()->route('deleted-items.index')->with('message', '削除しました');
+        return redirect()->route('deleted-items.index')->with('message', '削除しました。');
     }
     public function deletedItemRestore($id){
 

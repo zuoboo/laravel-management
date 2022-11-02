@@ -37,12 +37,12 @@
                         </div>
                         <div class="form-group">
                             <label for="price">価格</label>
-                            <input type="number" class="form-control" id="price" name="price" placeholder="価格">
+                            <input type="number" class="form-control" id="price" name="price" placeholder="価格" value="{{ old('price')}}">
                         </div>
 
                         <div class="form-group">
                             <label for="detail">詳細</label>
-                            <textarea class="form-control" id="detail" name="detail" placeholder="詳細説明"></textarea>
+                            <textarea class="form-control" id="detail" name="detail" placeholder="詳細説明">{{ old('detail')}}</textarea>
                         </div>
                     </div>
                     <div class="card-footer text-right">

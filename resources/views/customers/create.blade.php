@@ -18,34 +18,33 @@
                     </ul>
                 </div>
             @endif
-
             <div class="card card-primary">
                 <form method="POST" action="{{ route('customers.store') }}">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="name">顧客名</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="">
+                            <label for="name">氏名</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
                         </div>
                         <div class="form-group">
-                            <label for="kana">顧客名カナ</label>
-                            <input type="text" class="form-control" id="kana" name="kana" placeholder="">
+                            <label for="kana">カナ</label>
+                            <input type="text" class="form-control" id="kana" name="kana" value="{{ old('kana') }}">
                         </div>
                         <div class="form-group">
                             <label for="tel">電話番号</label>
-                            <input type="tel" class="form-control" id="tel" name="tel" placeholder="">
+                            <input type="tel" class="form-control" id="tel" name="tel" value="{{ old('tel') }}">
                         </div>
                         <div class="form-group">
                             <label for="email">メールアドレス</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="">
+                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
                         </div>
                         <div class="form-group">
                             <label for="postcode">郵便番号</label>
-                            <input type="number" class="form-control" id="postcode" name="postcode" placeholder="">
+                            <input type="number" class="form-control" id="postcode" name="postcode" value="{{ old('postcode') }}">
                         </div>
                         <div class="form-group">
                             <label for="address">住所</label>
-                            <input type="text" class="form-control" id="address" name="address" placeholder="">
+                            <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
                         </div>
                         <div class="form-group">
                             <label class="mr-4">性別</label>
@@ -57,12 +56,12 @@
                             <label for="gender2" class="ml-2 mr-4">その他</label>
                         </div>
                         <div class="form-group">
-                            <label for="birthday">誕生日</label>
-                            <input type="date" class="form-control" id="birthday" name="birthday" placeholder="カナ">
+                            <label for="birthday">生年月日</label>
+                            <input type="date" class="form-control" id="birthday" name="birthday" value="{{ old('birthday') }}">
                         </div>
                         <div class="form-group">
                             <label for="memo">メモ</label>
-                            <textarea class="form-control" id="memo" name="memo" placeholder=""></textarea>
+                            <textarea class="form-control" id="memo" name="memo" value="{{ old('memo') }}"></textarea>
                         </div>
                     </div>
                     <div class="card-footer text-right">
