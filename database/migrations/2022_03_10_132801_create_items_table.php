@@ -19,8 +19,10 @@ class CreateItemsTable extends Migration
             $table->string('name', 100)->index();
             $table->string('status', 100)->default('active');
             $table->smallInteger('type')->nullable();
+            $table->integer('price');
             $table->string('detail', 500)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -32,5 +34,8 @@ class CreateItemsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('items');
+        Schema::create('items', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }
