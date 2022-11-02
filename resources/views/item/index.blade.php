@@ -27,14 +27,13 @@
     </form>
 
     <div class="row pt-2">
-        <div class="col-12">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">商品一覧</h3>
                     <div class="card-tools">
                         <div class="input-group input-group-sm">
                             <div class="input-group-append">
-                                <a href="{{ url('items/add') }}" class="btn btn-default">商品登録</a>
+                                <a href="{{ url('items/add') }}" class="btn btn-success">商品登録</a>
                             </div>
                         </div>
                     </div>
@@ -88,9 +87,9 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="px-4 pt-4">
-                        {{ $items->links() }}
-                    </div>
+                </div>
+                <div class="px-4 pt-4 card-footer">
+                    {{ $items->links() }}
                 </div>
             </div>
         </div>

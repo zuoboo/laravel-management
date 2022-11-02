@@ -6,6 +6,7 @@ const nl2br = (str) => {
 
 //今日の日時を表示
 window.onload = function () {
+    getInitialTotal()
     //今日の日時を表示
     var date = new Date()
     var year = date.getFullYear()
@@ -34,8 +35,8 @@ function keisan (count) {
     var total_price = Number(number) * Number(price);
     // alert(total_price);
     document.getElementById("field" + count).value = total_price;
+
     var ele = document.getElementsByClassName("count_price");
-    // alert(ele.length);
     var sum_total_price = 0;
     for(var i = 0; i < ele.length; i++ ) {
         var sum_number = Number(document.getElementById("quantity" + i).value);
@@ -46,6 +47,18 @@ function keisan (count) {
     }
     document.getElementById("sum_total_price").value = sum_total_price;
 
+}
 
+function getInitialTotal(){
+    var ele = document.getElementsByClassName("count_price");
+    var sum_total_price = 0;
+    for(var i = 0; i < ele.length; i++ ) {
+        var sum_number = Number(document.getElementById("quantity" + i).value);
+        if (sum_number > 0) {
+            var sum_price = Number(document.getElementById("price" + i).value);
+            sum_total_price += sum_number * sum_price;
+        }
+    }
+    document.getElementById("sum_total_price").value = sum_total_price;
 }
 

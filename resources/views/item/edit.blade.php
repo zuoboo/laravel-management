@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="type">種別</label>
+                        <label for="type">種別</label><br>
                         <select name="type">
                             @foreach (config('type') as $item_id => $status)
                                 <option value="{{ $item_id }}" >{{ $status }}</option>
@@ -47,8 +47,7 @@
                         <textarea class="form-control" id="detail" name="detail" value="{{ $item->detail }}">{{ $item->detail }}</textarea>
                     </div>
                 </div>
-
-                <div class="card-footer">
+                <div class="card-footer text-right">
                     <button type="submit" class="btn btn-primary">更新</button>
                 </div>
                 </form>

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', '顧客一覧')
+@section('title', '顧客購買履歴')
 
 @section('content_header')
-    <h1>顧客一覧</h1>
+    <h1>顧客購買履歴</h1>
 @stop
 
 @section('content')
@@ -18,49 +18,37 @@
             });
         @endif
     </script>
-    <form class="form-inline my-2 my-lg-0">
-        <div class="form-group">
-            <input type="search" class="form-control mr-sm-2" name="search" value="{{ request('search') }}"
-                placeholder="キーワードを入力" aria-label="検索...">
-        </div>
-        <input type="submit" value="検索" class="btn btn-info">
-    </form>
 
     <div class="row pt-2">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-append">
-                                <a href="{{ url('customers/create') }}" class="btn btn-success">顧客登録</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap table-striped">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>氏名</th>
-                                <th>カナ</th>
-                                <th>電話番号</th>
+                                <th>合計金額</th>
+                                <th>ステータス</th>
+                                <th>購入日</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($customers as $customer)
+                            @foreach ($orders as $order)
                                 <tr>
-                                    <td>{{ $customer->id }}</td>
-                                    <td>{{ $customer->name }}</td>
-                                    <td>{{ $customer->kana }}</td>
-                                    <td>{{ $customer->tel }}</td>
+                                    <td>
+                                        <a href="{{ route('purchases.show', ['purchase' => $order->id]) }}">{{ $order->id }}</a>
+                                    </td>
+                                    <td>{{ $order->customer_name }}</td>
+                                    <td>¥{{ number_format($order->total) }}</td>
+                                    <td>{{ $order->status }}</td>
+                                    <td>{{ $order->created_at }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                     <div class="px-4 pt-4 card-footer">
-                        {{ $customers->links() }}
+                        {{ $orders->links() }}
                     </div>
                 </div>
             </div>

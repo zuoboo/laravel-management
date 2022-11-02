@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -65,8 +65,8 @@
                             <textarea class="form-control" id="memo" name="memo" placeholder=""></textarea>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">顧客登録</button>
+                    <div class="card-footer text-right">
+                        <button type="submit" class="btn btn-primary">登録</button>
                     </div>
                 </form>
             </div>

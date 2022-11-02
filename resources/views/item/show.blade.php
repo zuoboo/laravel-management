@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -18,42 +18,34 @@
                     </ul>
                 </div>
             @endif
-
             <div class="card card-primary">
-                {{-- <form method="POST"> --}}
-                    @csrf
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="name">名前</label>
-                            <div  class="form-control" id="name">
-                                {{ $item->name }}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="type">種別</label>
-                            {{-- <input type="number" class="form-control" id="type" name="type" placeholder="1, 2, 3, ..."> --}}
-                            {{-- @foreach (config('type') as $item_id => $status) --}}
-                            <div class="form-control" id="type">{{ config("type.$item->type") }}</div>
-                            {{-- @endforeach --}}
-                        </div>
-                        <div class="form-group">
-                            <label for="price">価格</label>
-                            <div  class="form-control" id="price">
-                                {{ $item->price }}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="detail">詳細</label>
-                            <div class="border rounded pt-2 pb-2 pl-2" id="name">
-                                {!! nl2br($item->detail) !!}
-                            </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="name">名前</label>
+                        <div class="form-control" id="name">
+                            {{ $item->name }}
                         </div>
                     </div>
-
-                    <div class="card-footer">
-                        <button type="submit" onclick="location.href = '/items'" class="btn btn-primary">戻る</button>
+                    <div class="form-group">
+                        <label for="type">種別</label>
+                        <div class="form-control" id="type">{{ config("type.$item->type") }}</div>
                     </div>
-                {{-- </form> --}}
+                    <div class="form-group">
+                        <label for="price">価格</label>
+                        <div class="form-control" id="price">
+                            {{ $item->price }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="detail">詳細</label>
+                        <div class="border rounded pt-2 pb-2 pl-2" id="name">
+                            {!! nl2br($item->detail) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-right">
+                    <button type="submit" onclick="location.href = '/items'" class="btn btn-primary">戻る</button>
+                </div>
             </div>
         </div>
     </div>

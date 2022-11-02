@@ -15,7 +15,6 @@ class Item extends Model
         if (!empty($input)) {
             if (Item::where('name', 'like', $input . '%')->exists()) {
                 return $query->where('name', 'like', $input . '%');
-
             }
         }
     }

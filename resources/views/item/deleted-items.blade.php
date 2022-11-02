@@ -18,20 +18,10 @@
             });
         @endif
     </script>
-    <form class="form-inline my-2 my-lg-0">
-        <div class="form-group">
-            <input type="search" class="form-control mr-sm-2" name="search" value="{{ request('search') }}"
-                placeholder="キーワードを入力" aria-label="検索...">
-        </div>
-        <input type="submit" value="検索" class="btn btn-info">
-    </form>
 
     <div class="row pt-2">
-        <div class="col-12">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">削除商品一覧</h3>
-                </div>
                 <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap table-striped">
                         <thead>
@@ -70,7 +60,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="px-4 pt-4">
+                    <div class="px-4 pt-4 card-footer">
                         {{ $deletedItems->links() }}
                     </div>
                 </div>
