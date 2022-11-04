@@ -22,8 +22,8 @@
         <div class="form-group">
             <input type="search" class="form-control mr-sm-2" name="search" value="{{ request('search') }}"
                 placeholder="キーワードを入力" aria-label="検索...">
+            <input type="submit" value="検索" class="btn btn-info">
         </div>
-        <input type="submit" value="検索" class="btn btn-info">
     </form>
 
     <div class="row pt-2">
