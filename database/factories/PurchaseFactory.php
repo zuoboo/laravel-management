@@ -19,7 +19,8 @@ class PurchaseFactory extends Factory
 
 
         return [
-            'customer_id' => rand(1, Customer::count()),
+            // 'customer_id' => rand(1, Customer::count()),
+            'customer_id' => 4,
             'status' => $this->faker->boolean,
             'created_at' => $created_at
             ];
