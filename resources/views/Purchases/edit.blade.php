@@ -92,8 +92,6 @@
             </div>
         </form>
     </body>
-
-
 @stop
 
 @section('css')
