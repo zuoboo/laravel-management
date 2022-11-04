@@ -21,7 +21,7 @@
                                 <input type="date" id="today">
                             </div>
                             <div class="form-group">
-                                <label for="customer">会員名</label><br>
+                                <label for="customer">顧客名</label><br>
                                 <select name="customer_id">
                                     @foreach ($customers as $customer)
                                         <option value="{{ $customer->id }}">{{ $customer->id }} : {{ $customer->name }}

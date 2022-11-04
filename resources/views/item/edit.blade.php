@@ -33,7 +33,7 @@
                         <label for="type">種別</label><br>
                         <select name="type">
                             @foreach (config('type') as $item_id => $status)
-                                <option value="{{ $item_id }}" >{{ $status }}</option>
+                                <option value="{{ $item_id }}" {{ $item->type == $item_id ? 'selected' : '' }}>{{ $status }}</option>
                             @endforeach
                         </select>
                     </div>

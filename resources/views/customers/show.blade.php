@@ -28,6 +28,12 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <div class="form-control" id="email">
+                            {{ $customer->email }}
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="postcode">郵便番号</label>
                         <div class="form-control" id="postcode">
                             {{ $customer->postcode }}
