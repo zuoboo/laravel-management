@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="customer_name">会員名</label>
+                            <label for="customer_name">顧客名</label>
                             <div class="form-control" id="customer_name">
                                 {{ $order[0]->customer_name }}
                             </div>

@@ -11,13 +11,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script>
+    {{-- <script>
         @if (session('message'))
             $(function() {
                 toastr.success('{{ session('message') }}');
             });
         @endif
-    </script>
+    </script> --}}
 
     <div class="row pt-2">
         <div class="col-md-12">
@@ -47,13 +47,13 @@
                                             <a method="patch" class="btn btn-outline-primary mr-2" href="{{ route('deleted-items.restore', ['item' => $item->id]) }}">復元する
                                                 @csrf
                                             </a>
-                                            <form action="{{ route('deleted-items.destroy', ['item' => $item->id]) }}" method="post"
+                                            {{-- <form action="{{ route('deleted-items.destroy', ['item' => $item->id]) }}" method="post"
                                                 id="delete_{{ $item->id }}">
                                                 @csrf
                                                 <button type="submit" class="btn btn-outline-danger" onclick="return deletePost(this)"
                                                     data-id="{{ $item->id }}">完全に削除
                                                 </button>
-                                            </form>
+                                            </form> --}}
                                         </div>
                                     </td>
                                 </tr>
@@ -67,12 +67,12 @@
             </div>
         </div>
     </div>
-    <script>
+    {{-- <script>
         function deletePost(e) {
             'use strict';
             return confirm('本当に削除してもいいですか？');
         }
-    </script>
+    </script> --}}
 @stop
 
 @section('css')

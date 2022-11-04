@@ -41,7 +41,7 @@ Route::resource('purchases', PurchaseController::class)->middleware('auth', 'ver
 
 Route::prefix('deleted-items')->group(function(){
     Route::get('index',[ItemController::class, 'deletedItemIndex'])->name('deleted-items.index');
-    Route::post('destroy/{item}', [ItemController::class, 'deletedItemDestroy'])->name('deleted-items.destroy');
+    // Route::post('destroy/{item}', [ItemController::class, 'deletedItemDestroy'])->name('deleted-items.destroy');
     Route::patch('restore/{item}', [ItemController::class, 'deletedItemRestore'])->name('deleted-items.restore');
     Route::get('restore/{item}', [ItemController::class, 'deletedItemRestore'])->name('deleted-items.restore');
 });

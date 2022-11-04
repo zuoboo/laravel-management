@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', '購買履歴 編集画面')
+@section('title', '購買履歴 編集')
 
 @section('content_header')
-    <h1>購買履歴 編集画面</h1>
+    <h1>購買履歴 編集</h1>
 @stop
 
 @section('content')
@@ -23,7 +23,7 @@
                                     value="{{ $order[0]->created_at }}">
                             </div>
                             <div class="form-group">
-                                <label for="customer_name">会員名</label>
+                                <label for="customer_name">顧客名</label>
                                 <input disabled class="form-control" type="text" id="customer" name="customer"
                                     value="{{ $order[0]->customer_name }}">
                             </div>

@@ -110,12 +110,11 @@ class ItemController extends Controller
         $deletedItems = Item::onlyTrashed()->paginate(10);
         return view('item.deleted-items', compact('deletedItems'));
     }
-    public function deletedItemDestroy($id){
-        Item::onlyTrashed()->findOrFail($id)->forceDelete();
-        return redirect()->route('deleted-items.index')->with('message', '削除しました。');
-    }
+    // public function deletedItemDestroy($id){
+    //     Item::onlyTrashed()->findOrFail($id)->forceDelete();
+    //     return redirect()->route('deleted-items.index')->with('message', '削除しました。');
+    // }
     public function deletedItemRestore($id){
-
         Item::onlyTrashed()->findOrFail($id)->restore();
         $item = Item::findOrFail($id);
         return redirect()->route('item.index')->with('message', $item->name.'を復元しました。');
