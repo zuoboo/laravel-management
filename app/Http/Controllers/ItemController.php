@@ -41,7 +41,7 @@ class ItemController extends Controller
             $this->validate($request, [
                 'name' => ['required', 'max:50'],
                 'type' => ['required', 'max:10'],
-                'price' => ['required'],
+                'price' => ['required', 'integer', 'min:0'],
             ]);
             // 商品登録
             Item::create([
@@ -76,7 +76,7 @@ class ItemController extends Controller
         $this->validate($request, [
             'name' => ['required', 'max:50'],
             'type' => ['required', 'max:10'],
-            'price' => ['required'],
+            'price' => ['required', 'integer', 'min:0'],
         ]);
 
         $item = Item::findOrFail($id);
