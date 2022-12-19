@@ -26,7 +26,7 @@ class StoreItemRequest extends FormRequest
         return [
             'name' => ['required', 'max:50'],
             'type' => ['required', 'max:10'],
-            'price' => ['required'],
+            'price' => ['required', 'integer', 'min:0'],
         ];
     }
 }
